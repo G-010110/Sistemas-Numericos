@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms.VisualStyles;
@@ -9,6 +10,8 @@ namespace ConvertidorSistematico.Logica
 {
     internal class LogicaOctal
     {
+        //Equivalentes octales de binarios de 3 bits, valores respectivamente agrupados al indice del arreglo
+        private static string[] equivalente = {"000","001","010","011","100","101","110","111"};
         public static string decimalToOctal(int numero)
         {
             int cociente;
@@ -36,6 +39,16 @@ namespace ConvertidorSistematico.Logica
             }
 
             return resultado+"";
+        }
+
+        public static string octalToBinario(string numero)
+        {
+            string r = "";
+            foreach(char l in numero)
+            {
+                r += equivalente[(int)Char.GetNumericValue(l)];
+            }
+            return r;
         }
     }
 }

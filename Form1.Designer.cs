@@ -100,8 +100,9 @@
             this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
-            "Sistema decimal",
-            "Sistema octal"});
+            "Sistema Decimal",
+            "Sistema Octal",
+            "Sistema Binario"});
             this.comboBox2.Location = new System.Drawing.Point(21, 163);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(239, 32);
@@ -114,8 +115,9 @@
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "Sistema decimal",
-            "Sistema octal"});
+            "Sistema Decimal",
+            "Sistema Octal",
+            "Sistema Binario"});
             this.comboBox1.Location = new System.Drawing.Point(21, 61);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(239, 32);
