@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -29,9 +30,9 @@ namespace ConvertidorSistematico.Logica
         //Metodos 
         public static string decimalToBinaria(int numero)
         {
-            int cociente;
+            int cociente=0;
             string resultado = "";
-
+            resultado = (numero == 0) ? "0":"";
             while (numero > 0)
             {
                 //flujo
@@ -43,10 +44,45 @@ namespace ConvertidorSistematico.Logica
             return resultado;
         }
 
+        public static string decimalFraccionToBinaria(float numero)
+        {
+            string r = decimalToBinaria((int)numero);
+            if ((numero - (int)Math.Truncate(numero))==0.0)
+            {
+                //Es entero
+            } else
+            {
+                //Es fraccionario
+                r = fraccionToBinaria(numero,r);
+            }
+            return r;
+        }
+
+        public static string fraccionToBinaria(float numero, string r)
+        {
+            r += ".";
+            float fraccionaria = numero - (float)Math.Truncate(numero);
+            //fraccion de hasta que llegue a cero o maximo 10 digitos
+            for (int i = 0; i < 10; i++)
+            {
+                numero = fraccionaria * 2;
+                fraccionaria = numero%1;
+                r += Math.Truncate(numero);
+                if (fraccionaria == 0)
+                {
+                    break;
+                }
+            }
+            return r;
+        }
+
+
+
         public static string binariaToDecimal(string numero)
         {
             int l = (numero.Length);
             int resultado = 0;
+            if(numero == "0") { return "0"; };
             for (int i = 0; i < numero.Length; i++)
             {
                 l--;
@@ -54,6 +90,48 @@ namespace ConvertidorSistematico.Logica
             }
 
             return resultado + "";
+        }
+
+        public static string fraccionbinariaToDecimal(string numero)
+        {
+            //se coloca solo la parte entera
+            //int f = int.Parse(numero) % 1;
+            string entero="";
+            string fraccion = "";
+            int condicion = numero.IndexOf(".");
+            if (condicion != -1)
+            {
+                //Es fraccionario
+                entero = binariaToDecimal(numero.Substring(0,condicion));
+                fraccion = binariaToDecimal(numero.Substring(condicion+1,numero.Length-(condicion+1)));
+                entero += ".";
+            }
+            else
+            {
+                //Es entero
+                entero = binariaToDecimal(numero);
+            }
+            return entero+fraccion;
+        }
+
+        public string fraccionbinarioToOctal(string numero)
+        {
+            string entero = "";
+            string fraccion = "";
+            int condicion = numero.IndexOf(".");
+            if (condicion != -1)
+            {
+                //Es fraccionario
+                entero = binarioToOctal(numero.Substring(0, condicion));
+                fraccion = binarioToOctal(numero.Substring(condicion + 1, numero.Length - (condicion + 1)));
+                entero += ".";
+            }
+            else
+            {
+                //Es entero
+                entero = binarioToOctal(numero);
+            }
+            return entero + fraccion;
         }
 
         public string binarioToOctal(string numero)

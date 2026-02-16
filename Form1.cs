@@ -36,32 +36,33 @@ namespace ConvertidorSistematico
                     break;
                 //decimal a octal
                 case 0 when comboBox2.SelectedIndex == 1:
-                    resultado.Text = LogicaOctal.decimalToOctal(int.Parse(campo1.Text));
+                    resultado.Text = LogicaOctal.decimalFraccionToOctal(float.Parse(campo1.Text));
                     break;
                 //octal a octal
                 case 1 when comboBox2.SelectedIndex == 1:
                     break;
                 //octal a decimal 
                 case 1 when comboBox2.SelectedIndex == 0:
-                    resultado.Text = LogicaOctal.octalToDecimal(campo1.Text);
+                    resultado.Text = LogicaOctal.fraccionoctalToDecimal(campo1.Text);
                     break;
                 //octal a binario 
                 case 1 when comboBox2.SelectedIndex == 2:
-                    resultado.Text = LogicaOctal.octalToBinario(campo1.Text);
+                    resultado.Text = LogicaOctal.fraccionoctalToBinario(campo1.Text);
                     break;
                 ////////////////////////////////////////////
                 //Decimal a binario
                 case 0 when comboBox2.SelectedIndex == 2:
-                    resultado.Text = LogicaBinaria.decimalToBinaria(int.Parse(campo1.Text));
+                    //resultado.Text = LogicaBinaria.decimalToBinaria(float.Parse(campo1.Text));
+                    resultado.Text = LogicaBinaria.decimalFraccionToBinaria(float.Parse(campo1.Text));
                     break;
                 //Binario a decimal 
                 case 2 when comboBox2.SelectedIndex == 0:
-                    resultado.Text = LogicaBinaria.binariaToDecimal(campo1.Text);
+                    resultado.Text = LogicaBinaria.fraccionbinariaToDecimal(campo1.Text);
                     break;
                 //Binario a octal
                 case 2 when comboBox2.SelectedIndex == 1:
                     LogicaBinaria lb = new LogicaBinaria();
-                    resultado.Text = lb.binarioToOctal(campo1.Text);
+                    resultado.Text = lb.fraccionbinarioToOctal(campo1.Text);
                     break;
                 default:
                     MessageBox.Show("Ingresa el sistema numerico I/O","Advertencia");
